@@ -38,7 +38,7 @@ return [
             // 数据库编码
             'charset'         => env('DB_CHARSET', 'utf8mb4'),
             // 数据库表前缀
-            'prefix'          => env('DB_PREFIX', 'blog_'),
+            'prefix'          => env('DB_PREFIX', 't_'),
             // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
             'deploy'          => 0,
             // 数据库读写是否分离 主从式有效

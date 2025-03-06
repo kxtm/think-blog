@@ -1,6 +1,6 @@
 <?php
 
-namespace app\admin\controller;
+namespace app\gl\controller;
 
 
 

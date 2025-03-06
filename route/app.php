@@ -9,5 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\facade\Route;
+
 Route::get('/', 'home/controller/Index@index');
 Route::get('search', 'home/controller/Search@index');
+

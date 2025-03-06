@@ -1,0 +1,76 @@
+body {
+    background-color: #f7f7f8;
+}
+
+input[type=button], button, input[type=text], input[type=radio], input[type=checkbox], input[type=button]:hover, button:hover, input[type=button]:focus, button:focus {
+    outline: none !important;
+}
+
+.main {
+    min-height: calc(100vh - 150px);
+    margin-top: 20px;
+}
+
+.footer {
+    height: 60px;
+    text-align: center;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.footer-content {
+    margin: 20px auto;
+}
+
+.header {
+    background: #fff;
+    box-shadow: 0 3px 10px hsla(0, 0%, 40%, .03);
+    border-radius: 0;
+    margin-bottom: 0;
+    height: 70px;
+}
+
+.header .navbar-brand {
+    float: left;
+    height: 70px;
+    font-size: 18px;
+    line-height: 38px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.header .navbar-brand img {
+    width: 100px;
+}
+
+.header .navbar-nav > li {
+    font-size: 16px;
+}
+
+.header .navbar-nav > li > a {
+    line-height: 38px;
+    padding-top: 18px;
+    padding-bottom: 0;
+
+}
+
+.header .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #3e71f6;
+    background-color: #fff;
+}
+
+.search {
+    width: 230px;
+    margin: 15px;
+}
+
+#searchBtn {
+    background: #c33232;
+    color: #fff;
+    padding: 6px 6px;
+    border: 0 none #fff;
+}
+
+.search input, #searchBtn {
+    height: 35px;
+}

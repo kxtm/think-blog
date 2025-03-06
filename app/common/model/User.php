@@ -8,10 +8,10 @@ use think\Model;
 /**
  * @mixin Model
  */
-class UserModel extends Model
+class User extends Model
 {
     //定义表明
-    protected $table = 't_user';
+   // protected $table = 't_user';
     protected $pk = 'id'; // 主键
 
     // 设置字段信息

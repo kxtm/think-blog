@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\gl\controller;
 
 use app\BaseController;
 
