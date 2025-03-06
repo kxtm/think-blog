@@ -4,14 +4,17 @@ declare (strict_types=1);
 namespace app\home\controller;
 
 use app\BaseController;
+use app\common\model\UserModel;
 use think\facade\View;
 
 
-class Index  extends BaseController
+class Index extends BaseController
 {
     public function index(): string
     {
-        View::assign('name', '您好！这是一个[home]示例应用1111');
+        $user =UserModel::where('user_account', 'q')->find();
+        dump($user->toArray());
+        View::assign('name', '111');
         return View::fetch();
     }
 

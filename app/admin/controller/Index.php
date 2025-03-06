@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace app\admin\controller;
 
-use app\admin\validate\User;
+use app\common\validate\User;
 use think\exception\ValidateException;
 use think\facade\View;
 use think\response\Redirect;
