@@ -29,7 +29,7 @@ return [
     // 是否使用控制器后缀
     'controller_suffix'     => false,
     // 默认模块名（开启自动多模块有效）
-    'default_module'        => 'index',
+    'default_module'        => 'home',
     // 默认控制器名
     'default_controller'    => 'Index',
     // 默认操作名
