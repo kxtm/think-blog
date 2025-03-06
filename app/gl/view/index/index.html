@@ -11,8 +11,29 @@
     <title>管理后台</title>
 </head>
 <body>
-    <div class="container-fluid login-container">
-
+<div class="container-fluid login-container">
+    <form id="login-form">
+        <div class="login-title">登录</div>
+        <div class="login-error"></div>
+        <div class="input-group ">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" placeholder="用户名"/>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span> </span>
+            <input type="text" class="form-control" placeholder="密码"/>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-picture"></span> </span>
+            <input type="text" class="form-control" placeholder="验证码"/>
+        </div>
+        <div class="input-group">
+            <button type="button" class="btn  btn-primary ">登录</button>
+        </div>
+    </form>
+    <div class="footer">
+        <div class="footer-wapper">Powered By 大虫 ©2025-2099</div>
     </div>
+</div>
 </body>
 </html>
