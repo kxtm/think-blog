@@ -12,12 +12,13 @@
 </head>
 <body>
 <div class="container-fluid login-container">
-    <form id="login-form" action="{:Url('login')}" method="post">
+    <form id="login-form" action="{:url('/gl/login')}" method="post">
         <div class="login-title">登录</div>
-        <div class="login-error">{if isset($error)}  {{$error}}  {/if}</div>
+        <div class="login-error">{if isset($error)} {$error}  {/if}</div>
         <div class="input-group ">
+            <input type="hidden" name="__token__" value="{:token()}" />
             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-            <input type="text" id="account" name="username" class="form-control" placeholder="用户名"/>
+            <input type="text" id="account" name="username" class="form-control"  value="{$username}" placeholder="用户名"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span> </span>

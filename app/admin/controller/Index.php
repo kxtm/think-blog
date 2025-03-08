@@ -7,25 +7,26 @@ use app\BaseController;
 use app\common\validate\LoginValidate;
 use app\Request;
 use think\exception\ValidateException;
+use think\facade\Session;
 use think\facade\View;
 
 class Index extends BaseController
 {
     public function index()
     {
-        dump(session('error'));
+        View::assign('error', Session::pull('error'));
+        view::assign('username', Session::pull('username'));
         return View::fetch();
     }
 
     public function login(Request $request)
     {
-        dump($request->post());
         try {
             validate(LoginValidate::class)->check($request->post());
         } catch (ValidateException $e) {
-            session('error', $e->getMessage());
-            dump(session('error'));
+            Session::set('error', $e->getMessage());
         }
-        return view::fetch('main');
+        Session::set('username', $request->post('username'));
+        return redirect('/gl');
     }
 }
