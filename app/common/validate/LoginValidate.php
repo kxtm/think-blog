@@ -4,7 +4,7 @@ namespace app\common\validate;
 
 use think\Validate;
 
-class User extends Validate
+class LoginValidate extends Validate
 {
     protected $rule = [
         'username' => 'require|min:4',

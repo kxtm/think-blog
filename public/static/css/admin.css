@@ -30,6 +30,17 @@ input[type=button], button, input[type=text], input[type=radio], input[type=chec
     text-align: center;
     width: 100%;
 }
+#login-form #captcha{
+    width: 60%;
+}
+#login-form img{
+    width: 40%;
+    height: 34px;
+    padding: 1px;
+    cursor: pointer;
+}
+
+
 .login-title{
     margin: 20px auto 10px;
     line-height: 35px;
