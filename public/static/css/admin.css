@@ -49,12 +49,14 @@ input[type=button], button, input[type=text], input[type=radio], input[type=chec
     text-align: center;
     text-shadow: 1px 1px 0 #fff;
 }
+
 .login-error{
-    text-align: center;
     color: #761c19;
-    font-size: 16px;
     height: 15px;
     line-height: 5px;
+    padding: 0 45px;
+    font-size: 12px;
+    font-weight: 600;
 }
 .footer{
     position: fixed;
