@@ -10,6 +10,10 @@
   <script src="/static/js/jquery.js"></script>
   <script src="/static/js/bootstrap.js"></script>
   <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+  <script>
+    let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/windows phone/i.test(userAgent) || /android/i.test(userAgent) || /iphone|ipad|ipod/i.test(userAgent)) {window.location.href = '/mobile';}
+  </script>
   <title>日记本</title>
 </head>
 <body>
