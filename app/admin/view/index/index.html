@@ -22,12 +22,12 @@
         </div>
         <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span> </span>
-            <input type="text" id="password" required name="password" class="form-control" placeholder="密码"/>
+            <input type="password" id="password" required name="password" class="form-control" placeholder="密码"/>
         </div>
         <div class="input-group">
             <span class="input-group-addon"> <span class="glyphicon glyphicon-picture"></span> </span>
-            <input type="text" class="form-control" required id="captcha" name="captcha" placeholder="验证码"/>
-            {:captcha_img()}
+            <input type="text" class="form-control" required id="captcha" name="code" placeholder="验证码"/>
+            <img src="{:url(\'/gl/verify\')}" onclick="this.src='{:url(\'/gl/verify\')}?'+Math.random()"  alt="验证码">
         </div>
         <div class="input-group">
             <button type="submit" class="btn  btn-primary ">登录</button>

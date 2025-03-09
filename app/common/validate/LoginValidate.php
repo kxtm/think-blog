@@ -9,7 +9,7 @@ class LoginValidate extends Validate
     protected $rule = [
         'username|用户名' => 'require|alphaNum',
         'password|密码' => 'require|min:6',
-        'captcha|验证码' => 'require|captcha'
+        'code|验证码' => 'require|alphaNum'
     ];
 
     protected $message = [

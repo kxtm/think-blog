@@ -26,7 +26,7 @@
         "topthink/think-filesystem": "^2.0",
         "topthink/think-view": "^2.0",
         "topthink/think-multi-app": "^1.1",
-        "topthink/think-captcha": "^3.0"
+        "ext-gd": "*"
     },
     "require-dev": {
         "topthink/think-dumper": "^1.0",
