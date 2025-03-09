@@ -7,14 +7,14 @@ use think\Validate;
 class LoginValidate extends Validate
 {
     protected $rule = [
-        'username' => 'require|min:4',
-        'password' => 'require|min:6',
+        'username|用户名' => 'require|alphaNum',
+        'password|密码' => 'require|min:6',
+        'captcha|验证码' => 'require|captcha'
     ];
 
     protected $message = [
         'username.require' => '用户名不能为空',
-        'username.min'     => '用户名至少4个字符',
         'password.require' => '密码不能为空',
-        'password.min'     => '密码长度至少6位',
+        'password.min' => '密码长度至少6位',
     ];
 }

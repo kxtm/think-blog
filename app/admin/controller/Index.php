@@ -12,8 +12,9 @@ use think\facade\View;
 
 class Index extends BaseController
 {
-    public function index()
+    public function index(Request $request)
     {
+
         View::assign('error', Session::pull('error'));
         view::assign('username', Session::pull('username'));
         return View::fetch();
@@ -27,6 +28,13 @@ class Index extends BaseController
             Session::set('error', $e->getMessage());
         }
         Session::set('username', $request->post('username'));
+        if (!captcha_check($request->post('captcha'))) {
+            // 验证失败
+            Session::set('error', '验证码错误');
+        }
+        if (!Session::has('error')) {
+            return View::fetch('main');
+        }
         return redirect('/gl');
     }
 }
