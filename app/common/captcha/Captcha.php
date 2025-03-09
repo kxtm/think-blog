@@ -81,8 +81,8 @@ class Captcha
      */
     public function create($code)
     {
-        $this->imageW || $this->imageW = $this->length * $this->fontSize * 1.5 + $this->length * $this->fontSize / 2;
-        $this->imageH || $this->imageH = $this->fontSize * 2.5;
+        $this->imageW || $this->imageW = (int)($this->length * $this->fontSize * 1.5 + $this->length * $this->fontSize / 2);
+        $this->imageH || $this->imageH = (int)($this->fontSize * 2.5);
         $this->imageW = (int)$this->imageW;
         $this->imageH = (int)$this->imageH;
         // 建立一幅 $this->imageW x $this->imageH 的图像

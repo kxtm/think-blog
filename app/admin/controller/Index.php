@@ -68,7 +68,6 @@ class Index extends BaseController
     public
     function main()
     {
-        dump(Session::get('captcha'));
         return View::fetch('main');
     }
 
