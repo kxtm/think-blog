@@ -5,6 +5,8 @@ namespace app\admin\controller;
 
 use app\BaseController;
 use app\common\captcha\Captcha;
+use app\common\model\User;
+use app\common\utils\AesUtil;
 use app\common\utils\Constr;
 use app\common\validate\LoginValidate;
 use app\Request;
@@ -16,10 +18,13 @@ use think\facade\View;
 
 class Index extends BaseController
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
-        View::assign(Constr::$error, Session::pull(Constr::$error));
-        view::assign('username', Session::get('username'));
+        Session::set('key', AesUtil::getKV());
+        Session::set('iv', AesUtil::getKV());
         return View::fetch();
     }
 
@@ -38,8 +43,7 @@ class Index extends BaseController
     public
     function login(Request $request)
     {
-        Log::info('获取的' . Session::get(Constr::$captcha));
-        Log::info('输入验证码' . $request->post('code'));
+
         try {
             validate(LoginValidate::class)->check($request->post());
         } catch (ValidateException $e) {
@@ -50,9 +54,12 @@ class Index extends BaseController
             // 验证失败
             Session::set(Constr::$error, '验证码错误');
         }
+        $pwd = AesUtil::dec($request->post('password'), Session::pull('key'), Session::pull('iv'));
+        Log::info($pwd);
         if (!Session::has(Constr::$error)) {
             Session::delete(Constr::$captcha);
             Session::delete(Constr::$error);
+            Session::set(Constr::$utk, new User());
             return redirect('/gl/main');
         }
         return redirect('/gl');

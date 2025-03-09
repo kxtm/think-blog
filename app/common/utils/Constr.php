@@ -10,6 +10,6 @@ class Constr
 
     public static string $error='error';
 
-    public static string $uid='user';
+    public static string $utk='user';
 
 }

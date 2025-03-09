@@ -10,7 +10,6 @@ class Article extends BaseController
 {
     public function index($title = null, $page = 1): string
     {
-        dump($this->request->param());
         View::assign('title', $title);
         View::assign('page', $page);
         return View::fetch("index");
