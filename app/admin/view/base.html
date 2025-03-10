@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=0, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="/static/css/bootstrap.css">
-  <link rel="stylesheet" href="/static/css/admin.css">
+  <link rel="stylesheet" href="/static/css/admin.css?v=1">
   <script src="/static/js/jquery.js"></script>
   <script src="/static/js/bootstrap.js"></script>
   <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
@@ -40,9 +40,9 @@
        <ul class="nav flex-column">
          <li class="nav-item  active"><a class="nav-link" href="{:url('/gl/main')}">仪表盘<span class="sr-only">(current)</span></a></li>
          <li class="nav-item">
-           <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#categoriesMenu">文章管理</a>
-           <ul class="sub-menu collapse" id="categoriesMenu">
-             <li class="nav-item">
+           <a class="nav-link" href="#" onclick="$('.sub-menu').toggleClass('open')">文章管理</a>
+           <ul class="nav sub-menu">
+             <li class="nav-item" >
                <a class="nav-link" href="{:url('/gl/article/add')}">新增文章</a>
              </li>
              <li class="nav-item">
