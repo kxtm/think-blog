@@ -69,7 +69,7 @@ class Captcha
         for ($i = 0; $i < $this->length; $i++) {
             $bag .= $characters[random_int(0, count($characters) - 1)];
         }
-        return mb_strtolower($bag, 'UTF-8');
+        return strtolower($bag);
 
     }
 

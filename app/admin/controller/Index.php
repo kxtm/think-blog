@@ -23,8 +23,8 @@ class Index extends BaseController
      */
     public function index()
     {
-        Session::set('key', AesUtil::getKV());
-        Session::set('iv', AesUtil::getKV());
+        Session::set('key', AesUtil::getKV(), 300);
+        Session::set('iv', AesUtil::getKV(), 300);
         return View::fetch();
     }
 
@@ -36,46 +36,50 @@ class Index extends BaseController
         $captcha = new Captcha();
         $code = $captcha->getCode();
         Log::info('生成验证码' . $code);
-        Session::set(Constr::$captcha, $code);
+        Session::set(Constr::$captcha, $code, 300);
         return $captcha->create($code);
     }
 
-    public
-    function login(Request $request)
+    public function login(Request $request)
     {
-
         try {
-            validate(LoginValidate::class)->check($request->post());
-        } catch (ValidateException $e) {
-            Session::set(Constr::$error, $e->getMessage());
-        }
-        Session::set('username', $request->post('username'));
-        if (Session::get(Constr::$captcha) != mb_strtolower($request->post('code'))) {
-            // 验证失败
-            Session::set(Constr::$error, '验证码错误');
-        }
-        $pwd = AesUtil::dec($request->post('password'), Session::pull('key'), Session::pull('iv'));
-        Log::info($pwd);
-        if (!Session::has(Constr::$error)) {
-            Session::delete(Constr::$captcha);
-            Session::delete(Constr::$error);
+            $data = $request->post();
+            Session::set('username', $data['username']);
+            validate(LoginValidate::class)->check($data);
+            if (!$this->validateCaptcha($data['code'])) {
+                Session::set(Constr::$error, '验证码错误');
+                return redirect('/gl');
+            }
+            $pwd = aesUtil::dec($data['password'], Session::get('key'), Session::get('iv'));
+            Log::info('解密后的密码: ' . $pwd);
             Session::set(Constr::$utk, new User());
             return redirect('/gl/main');
+        } catch (ValidateException $e) {
+            Session::set(Constr::$error, $e->getMessage());
+            return redirect('/gl');
+        } catch (\Exception $e) {
+            Log::error('登录异常: ' . $e->getMessage());
+            Session::set(Constr::$error, '登录失败，请稍后重试', 300);
+            return redirect('/gl');
         }
-        return redirect('/gl');
     }
 
-    public
-    function logout()
+    public function logout()
     {
         Session::clear();
         return redirect('/gl');
     }
-
-    public
-    function main()
+    public function main()
     {
         return View::fetch('main');
+    }
+
+    protected function validateCaptcha($inputCode)
+    {
+        $captcha = strtolower(Session::get(Constr::$captcha));
+        $inputCode = strtolower($inputCode);
+        Log::info('验证码错误 -> 输入: ' . $inputCode . ' -> 预期: ' . $captcha);
+        return $inputCode === $captcha;
     }
 
 }
