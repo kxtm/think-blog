@@ -24,6 +24,7 @@ class User extends Model
         'user_email' => 'string',
         'user_phone' => 'string',
         'user_state' => 'integer',
+        'user_token' => 'string',
         'create_time' => 'datetime',
         'update_time' => 'datetime',
     ];
@@ -37,6 +38,7 @@ class User extends Model
         'user_email' => 'email',
         'user_phone' => 'phone',
         'user_state' => 'state',
+        'user_token' => 'token',
         'create_time' => 'createTime',
         'update_time' => 'updateTime',
     ];

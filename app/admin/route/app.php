@@ -7,7 +7,7 @@ Route::group('/', function () {
     Route::get('', 'index/index');
     Route::get('verify', 'index/verify');
     Route::post('login', 'index/login')->token();
-    Route::post('logout', 'index/logout')->middleware(Auth::class);
+    Route::get('logout', 'index/logout')->middleware(Auth::class);
     Route::get('main', 'index/main')->middleware(Auth::class);
 })->name('gl');
 Route::group('article', function () {

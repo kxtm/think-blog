@@ -5,7 +5,7 @@ namespace app\admin\controller;
 
 use app\BaseController;
 use app\common\captcha\Captcha;
-use app\common\model\User;
+use app\common\service\UserService;
 use app\common\utils\AesUtil;
 use app\common\utils\Constr;
 use app\common\validate\LoginValidate;
@@ -18,13 +18,25 @@ use think\facade\View;
 
 class Index extends BaseController
 {
+
+    protected UserService $userService;
+
+    /**
+     * @param UserService $userService
+     */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+
     /**
      * @throws Exception
      */
     public function index()
     {
-        Session::set('key', AesUtil::getKV(), 300);
-        Session::set('iv', AesUtil::getKV(), 300);
+        Session::set('key', AesUtil::getKV());
+        Session::set('iv', AesUtil::getKV());
         return View::fetch();
     }
 
@@ -36,7 +48,7 @@ class Index extends BaseController
         $captcha = new Captcha();
         $code = $captcha->getCode();
         Log::info('生成验证码' . $code);
-        Session::set(Constr::$captcha, $code, 300);
+        Session::set(Constr::$captcha, $code);
         return $captcha->create($code);
     }
 
@@ -50,10 +62,15 @@ class Index extends BaseController
                 Session::set(Constr::$error, '验证码错误');
                 return redirect('/gl');
             }
-            $pwd = aesUtil::dec($data['password'], Session::get('key'), Session::get('iv'));
+            $pwd = aesUtil::dec($data['password'], Session::pull('key'), Session::pull('iv'));
             Log::info('解密后的密码: ' . $pwd);
-            Session::set(Constr::$utk, new User());
-            return redirect('/gl/main');
+            $loginToken = $this->userService->login($data['username'], $pwd);
+            if (!empty($loginToken)) {
+                Session::set(Constr::$error, '用户名或密码错误');
+                return redirect('/gl');
+            }
+            Session::set(Constr::$utk, $loginToken);
+            return redirect(url('/gl/main')->build());
         } catch (ValidateException $e) {
             Session::set(Constr::$error, $e->getMessage());
             return redirect('/gl');
@@ -69,6 +86,7 @@ class Index extends BaseController
         Session::clear();
         return redirect('/gl');
     }
+
     public function main()
     {
         return View::fetch('main');
@@ -76,7 +94,7 @@ class Index extends BaseController
 
     protected function validateCaptcha($inputCode)
     {
-        $captcha = strtolower(Session::get(Constr::$captcha));
+        $captcha = strtolower(Session::pull(Constr::$captcha));
         $inputCode = strtolower($inputCode);
         Log::info('验证码错误 -> 输入: ' . $inputCode . ' -> 预期: ' . $captcha);
         return $inputCode === $captcha;
