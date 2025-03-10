@@ -65,7 +65,7 @@ class Index extends BaseController
             $pwd = aesUtil::dec($data['password'], Session::pull('key'), Session::pull('iv'));
             Log::info('解密后的密码: ' . $pwd);
             $loginToken = $this->userService->login($data['username'], $pwd);
-            if (!empty($loginToken)) {
+            if (is_null($loginToken)) {
                 Session::set(Constr::$error, '用户名或密码错误');
                 return redirect('/gl');
             }

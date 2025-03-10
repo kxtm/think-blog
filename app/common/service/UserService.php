@@ -20,7 +20,7 @@ class UserService extends Service
         $user = User::where('user_account', $username)->findOrEmpty();
         if (!$user->isEmpty() && $user->passwd == md5($password) && $user->account == $username) {
             $uid = str_replace('-', '', Uuid::uuid4()->toString());
-            User::where('user_account', $username)->update(['user_token' => $uid, 'update_time' => time()]);
+            User::where('user_account', $username)->update(['user_token' => $uid, 'update_time' => date('Y-m-d H:i:s')]);
             return $uid;
         }
         return null;

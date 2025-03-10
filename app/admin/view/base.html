@@ -38,14 +38,23 @@
 <div class="container-fluid main-box">
      <div class="sider">
        <ul class="nav flex-column">
-         <li class="active"><a href="{:url('/gl/main')}">仪表盘<span class="sr-only">(current)</span></a></li>
-         <li><a href="{:url('/gl/article/add')}">新增文章</a></li>
-         <li><a href="{:url('/gl/article')}">文章列表</a></li>
-         <li><a href="{:url('/gl/category')}">分类管理</a></li>
-         <li><a href="{:url('/gl/tag')}">标签管理</a></li>
-         <li><a href="{:url('/gl/attachment')}">附件管理</a></li>
-         <li><a href="{:url('/gl/album')}">相册管理</a></li>
-         <li><a href="{:url('/gl/site')}">站点设置</a></li>
+         <li class="nav-item  active"><a class="nav-link" href="{:url('/gl/main')}">仪表盘<span class="sr-only">(current)</span></a></li>
+         <li class="nav-item">
+           <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#categoriesMenu">文章管理</a>
+           <ul class="sub-menu collapse" id="categoriesMenu">
+             <li class="nav-item">
+               <a class="nav-link" href="{:url('/gl/article/add')}">新增文章</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="{:url('/gl/article')}">文章列表</a>
+             </li>
+           </ul>
+         </li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/category')}">分类管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/tag')}">标签管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/attachment')}">附件管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/album')}">相册管理</a></li>
+         <li class="nav-item"><a  class="nav-link" href="{:url('/gl/site')}">站点设置</a></li>
        </ul>
      </div>
   <div  class="centent-box" >
@@ -53,5 +62,17 @@
   </div>
 </div>
 <script src="/static/js/admin.js"></script>
+<script>
+  // 简单的 JavaScript 逻辑，用于切换子菜单的显示状态
+  document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      if (this.getAttribute('data-bs-toggle') === 'collapse') {
+        e.preventDefault(); // 阻止默认跳转行为
+        const target = document.querySelector(this.getAttribute('data-bs-target'));
+        target.classList.toggle('show'); // 切换子菜单的显示状态
+      }
+    });
+  });
+</script>
 </body>
 </html>
