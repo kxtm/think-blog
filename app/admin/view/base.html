@@ -12,7 +12,7 @@
   <title> {block name="title"}日记本{/block}</title>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default header">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{:url('/gl/main')}">
@@ -31,21 +31,30 @@
 <div class="container-fluid main-box">
      <div class="sider">
        <ul class="nav flex-column">
-         <li class="nav-item  active"><a class="nav-link" href="{:url('/gl/main')}">概况<span class="sr-only">(current)</span></a></li>
+         <li class="nav-item active"><a class="nav-link" href="{:url('/gl/main')}">概览</a></li>
          <li class="nav-item" onclick="$(this).toggleClass('open')">
-           <a class="nav-link" href="#" >
-            <span>文章管理</span><i class="glyphicon icon"></i>
-           </a>
+           <a href="#"><span>文章管理</span><i class="glyphicon icon"></i></a>
            <ul class="nav sub-menu">
-             <li class="nav-item" >
+             <li class="nav-item sub-item">
                <a class="nav-link" href="{:url('/gl/article/add')}">新增文章</a>
              </li>
-             <li class="nav-item">
+             <li class="nav-item sub-item">
                <a class="nav-link" href="{:url('/gl/article')}">文章列表</a>
              </li>
            </ul>
          </li>
-         <li class="nav-item"><a class="nav-link" href="{:url('/gl/category')}">分类管理</a></li>
+
+         <li class="nav-item" onclick="$(this).toggleClass('open')">
+           <a href="#"><span>分类管理</span><i class="glyphicon icon"></i></a>
+           <ul class="nav sub-menu">
+             <li class="nav-item sub-item">
+               <a class="nav-link" href="#">新增分类</a>
+             </li>
+             <li class="nav-item sub-item">
+               <a class="nav-link" href="{:url('/gl/category')}">分类列表</a>
+             </li>
+           </ul>
+         </li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/tag')}">标签管理</a></li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/attachment')}">附件管理</a></li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/album')}">相册管理</a></li>
@@ -57,17 +66,5 @@
   </div>
 </div>
 <script src="/static/js/admin.js"></script>
-<script>
-  // 简单的 JavaScript 逻辑，用于切换子菜单的显示状态
-  document.querySelectorAll('.sidebar .nav-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      if (this.getAttribute('data-bs-toggle') === 'collapse') {
-        e.preventDefault(); // 阻止默认跳转行为
-        const target = document.querySelector(this.getAttribute('data-bs-target'));
-        target.classList.toggle('show'); // 切换子菜单的显示状态
-      }
-    });
-  });
-</script>
 </body>
 </html>
