@@ -10,9 +10,11 @@ a, a:hover, a:focus {
 ul {
     list-style: none
 }
+
 body {
     font-family: "Microsoft YaHei UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;;
 }
+
 .login-container {
     min-height: 100vh;
     background: url("../image/bg.webp") no-repeat;
@@ -94,6 +96,7 @@ body {
     padding-left: 0 !important;
 }
 
+
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
     margin-left: 0 !important;
 }
@@ -102,11 +105,15 @@ body {
     border-radius: 0;
     margin-bottom: 0;
 }
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand {
+    color: #000;
+}
 
 .navbar-brand {
     display: flex;
     align-items: center; /* 垂直居中 */
-    padding: 0 5px;
+    flex-direction: row;
+    padding: 0 15px;
 }
 
 .navbar-brand img {
@@ -130,7 +137,7 @@ body {
 }
 
 .navbar-header {
-    width: 198px;
+    width: 199px;
     border-right: 1px solid #dee2e6;
 
 }
@@ -145,7 +152,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     padding: 20px 0;
-    background-color: #6d0808;
+    background-color: #f9f9f9;
     border-right: 1px solid #dee2e6;
     position: fixed;
     top: 51px;
@@ -160,39 +167,74 @@ body {
     margin-left: 200px;
     padding: 20px;
 }
-.nav>li>a:focus, .nav>li>a:hover {
+
+.nav>li>a:focus, .nav>li> a:hover {
     text-decoration: none;
-    background-color: transparent;
+    /*background-color: transparent;*/
     font-weight: bold;
 }
-.sider .nav>li>a{
-    color: #fff;
+
+
+
+.sider .nav > li > a {
+    color: #000;
     padding: 10px 25px;
-}
-.sider .nav-item a:hover {
-    color: #fff;
-    font-weight: bold;
 }
 
 .sider .sub-menu {
-    background: rgb(83 6 6 / 90%);
     box-shadow: inset 1px 0 1px rgba(255, 255, 255, 0.7);
     display: none;
 }
+
 .sider .sub-menu .nav-link {
     padding: 10px 15px 10px 35px;
 }
-.sider .active {
-    background-color: rgb(255, 255, 255, 0.9);
-    box-shadow: inset 1px 0 1px rgba(255, 255, 255, 0.7);
-}
 
-.sider .nav>.active>a {
-    color: #000;
+.sider>.nav>.active{
+    background: #17293b;
+}
+.sider>.nav>.active>a{
+    color: #fff;
     font-weight: 600;
 }
-
-.open {
-    display: block !important;
+.sider>.nav>.open>.sub-menu {
+    display: block;
 }
 
+.sider>.nav>li .icon {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 28px;
+    line-height: 38px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sider>.nav>li .icon:before {
+    content: "\e080";
+    font-size: 12px;
+}
+
+.sider>.nav>.open .icon:before {
+    content: "\e114";
+    font-size: 12px;
+}
+
+.sider .open>a,.sider .open>a:focus,.sider .open>a:hover {
+     background-color: transparent;
+}
+.nav-link:before{
+    content: '';
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    background:blue;
+}
+.sider>.nav>.active>a:focus, .sider>.nav>.active> a:hover {
+    text-decoration: none;
+    background: transparent;
+    color: #fff;
+}
