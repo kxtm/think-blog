@@ -1,6 +1,7 @@
 <?php
 
 use app\AppService;
+use app\common\service\TaskSevice;
 use app\common\service\UserService;
 
 // 系统服务定义文件
@@ -8,4 +9,5 @@ use app\common\service\UserService;
 return [
     AppService::class,
     UserService::class,
+    TaskSevice::class,
 ];

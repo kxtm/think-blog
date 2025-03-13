@@ -19,6 +19,7 @@ return [
         'gl' => 'admin',
         '/' => 'home',
         'mobile' => 'mobile',
+        'api' => 'service',
     ],
     // 域名绑定（自动多应用模式有效）
     'domain_bind' => [],
