@@ -5,6 +5,7 @@ namespace app\common\service;
 use app\common\model\Task;
 use think\app\Service;
 use think\facade\Db;
+use function MongoDB\BSON\toJSON;
 
 class TaskSevice extends Service
 {
@@ -19,9 +20,18 @@ class TaskSevice extends Service
     public function getTaskData(): array
     {
         $todyTotal = Db::query("SELECT SUM(TIMESTAMPDIFF(HOUR,start_time,end_time)) todyTotal FROM t_task where  DATE(create_time) = CURDATE()", []);
+        if(empty($todyTotal[0]['todyTotal'])){
+           $todyTotal[0]['todyTotal']=0;
+        }
         $weekTotal = Db::query("SELECT SUM(TIMESTAMPDIFF(HOUR,start_time,end_time)) weekTotal  FROM t_task WHERE YEARWEEK(create_time) = YEARWEEK(CURDATE())", []);
+        if(empty($weekTotal[0]['weekTotal'])){
+            $weekTotal[0]['weekTotal']=0;
+        }
         $monthTotal = Db::query("SELECT SUM(TIMESTAMPDIFF(HOUR,start_time,end_time))  monthTotal  FROM t_task WHERE MONTH(create_time) = MONTH(CURDATE()) AND YEAR(create_time) = YEAR(CURRENT_DATE())", []);
+        if(empty($monthTotal[0]['monthTotal'])){
+            $monthTotal[0]['monthTotal']=0;
+        }
         $total = Db::query("SELECT COUNT(*) totalCount  from t_task", []);
-        return [$todyTotal[0], $weekTotal[0], $monthTotal[0], $total[0]];
+        return array_merge($todyTotal[0], $weekTotal[0], $monthTotal[0], $total[0]);
     }
 }

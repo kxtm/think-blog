@@ -4,7 +4,7 @@ namespace app\common\utils;
 
 class Result
 {
-    public static function ok(string $msg = "", array $data = [])
+    public static function ok(string $msg = "",mixed $data=null)
     {
         return json(['success' => true, 'msg' => $msg, 'data' => $data]);
     }
