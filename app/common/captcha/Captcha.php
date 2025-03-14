@@ -131,11 +131,11 @@ class Captcha
         if ($this->api) {
             return [
                 'code' => implode('', $text),
-                'img' => 'data:image/png;base64,' . base64_encode($content),
+                'img' => 'data:image/gif;base64,' . base64_encode($content),
             ];
         }
         // 输出验证码图片
-        return response($content, 200, ['Content-Length' => strlen($content)])->contentType('image/png');
+        return  response($content, 200, ['Content-Length' => strlen($content)])->contentType('image/gif');
     }
 
     /**

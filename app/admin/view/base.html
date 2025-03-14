@@ -31,8 +31,8 @@
 <div class="container-fluid main-box">
      <div class="sider">
        <ul class="nav flex-column">
-         <li class="nav-item active"><a class="nav-link" href="{:url('/gl/main')}">概览</a></li>
-         <li class="nav-item" onclick="$(this).toggleClass('open')">
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/main')}">概览</a></li>
+         <li class="nav-item">
            <a href="#"><span>文章管理</span><i class="glyphicon icon"></i></a>
            <ul class="nav sub-menu">
              <li class="nav-item sub-item">
@@ -43,18 +43,7 @@
              </li>
            </ul>
          </li>
-
-         <li class="nav-item" onclick="$(this).toggleClass('open')">
-           <a href="#"><span>分类管理</span><i class="glyphicon icon"></i></a>
-           <ul class="nav sub-menu">
-             <li class="nav-item sub-item">
-               <a class="nav-link" href="#">新增分类</a>
-             </li>
-             <li class="nav-item sub-item">
-               <a class="nav-link" href="{:url('/gl/category')}">分类列表</a>
-             </li>
-           </ul>
-         </li>
+         <li class="nav-item" ><a class="nav-link" href="{:url('/gl/category')}">分类管理</a></li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/tag')}">标签管理</a></li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/attachment')}">附件管理</a></li>
          <li class="nav-item"><a class="nav-link" href="{:url('/gl/album')}">相册管理</a></li>
