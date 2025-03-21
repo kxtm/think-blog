@@ -1,0 +1,2 @@
+let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+if (/windows phone/i.test(userAgent) || /android/i.test(userAgent) || /iphone|ipad|ipod/i.test(userAgent)) {window.location.href = '/mobile';}
