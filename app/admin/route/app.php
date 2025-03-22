@@ -38,3 +38,9 @@ Route::group('attachment', function () {
     Route::get('/', 'attachment/index');
 
 })->middleware(Auth::class);
+
+
+
+Route::miss(function () {
+    return \think\facade\View::fetch('error');
+});
