@@ -17,7 +17,7 @@ return [
     // 应用映射（自动多应用模式有效）
     'app_map' => [
         'gl' => 'admin',
-        '/' => 'home',
+        'home' => 'home',
         'mobile' => 'mobile',
         'api' => 'service',
     ],
