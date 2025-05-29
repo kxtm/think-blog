@@ -1,0 +1,232 @@
+
+input[type=button], button, input[type=text], input[type=radio], input[type=checkbox], input[type=button]:hover, button:hover, input[type=button]:focus, button:focus {
+    outline: none !important;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none
+}
+
+body {
+    font-family: "Microsoft YaHei UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;;
+}
+
+.login-container {
+    min-height: 100vh;
+    background: url("../image/bg.webp") no-repeat;
+    background-size: cover;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#login-form {
+    position: absolute; /* 子元素绝对定位 */
+    top: 50%; /* 距离顶部 50% */
+    left: 50%; /* 距离左侧 50% */
+    transform: translate(-50%, -50%); /* 通过偏移自身宽高的一半实现中心对齐 */
+    width: 450px;
+    height: 320px;
+    background: rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.39), 0 0 150px rgba(0, 0, 0, 0.43);
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+#login-form .input-group {
+    margin: 0 auto 20px;
+    width: 80%;
+}
+
+#login-form .btn-primary {
+    text-align: center;
+    width: 100%;
+}
+
+#login-form #captcha {
+    width: 60%;
+}
+
+#login-form img {
+    width: 40%;
+    height: 34px;
+    padding: 1px;
+    cursor: pointer;
+}
+
+
+.login-title {
+    margin: 20px auto 10px;
+    line-height: 35px;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.login-error {
+    color: #761c19;
+    height: 15px;
+    line-height: 5px;
+    padding: 0 45px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.header{
+    width: 100%;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    color: #eee;
+}
+
+.footer .footer-wapper {
+    padding: 15px;
+}
+
+.container-fluid {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+
+.navbar>.container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: 0 !important;
+}
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.navbar-default .navbar-nav>li>a,.navbar-default .navbar-brand {
+    color: #000;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    flex-direction: row;
+    padding: 0 15px;
+}
+
+.navbar-brand img {
+    height: 25px;
+}
+
+.header>.container-fluid>.navbar-collapse,.header>.container>.navbar-collapse {
+    margin-right:0;
+    margin-left: 200px;
+}
+.navbar-brand span:before {
+    content: "|";
+    position: absolute;
+    left: 0;
+    color: #3e3e3e; /* 竖杠颜色 */
+    font-size: 18px; /* 竖杠大小 */
+}
+
+.navbar-brand span {
+    color: #000; /* 白色文字 */
+    font-size: 18px; /* 文字大小 */
+    position: relative; /* 相对定位 */
+    padding-left: 10px; /* 左边距，为竖杠留出空间 */
+    font-weight: bold;
+}
+
+.navbar-header {
+    width: 199px;
+    border-right: 1px solid #dee2e6;
+
+}
+
+.main-box {
+    max-height: calc(100vh - 50px);
+}
+
+.sider {
+    width: 200px;
+    min-height: calc(100vh - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px 0;
+    background-color: #f9f9f9;
+    border-right: 1px solid #e1e1e1;
+    position: fixed;
+    top: 51px;
+    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0.9);
+}
+
+.centent-box {
+    background: #e6e6e6;
+    min-height: calc(100vh - 52px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 200px;
+    padding: 20px;
+}
+.nav>li>a:focus, .nav>li> a:hover {
+    text-decoration: none;
+    background-color: unset;
+    font-weight: bold;
+}
+.sider li a {
+    color: #000;
+    padding: 10px 25px;
+}
+.sider .sub-menu {
+    box-shadow: inset 1px 0 1px rgba(255, 255, 255, 0.7);
+    display: none;
+}
+.sider .sub-menu .nav-link {
+    padding: 10px 15px 10px 35px;
+}
+.sider .active{
+    background: #17293b;
+}
+.sider .active a,.sider>.nav>.open>.active>a{
+    color: #fff ;
+    font-weight: 600;
+}
+.sider>.nav>.open>.sub-menu {
+    display: block;
+}
+.sider>.nav>li .icon {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 28px;
+    line-height: 38px;
+    cursor: pointer;
+    text-align: center;
+}
+.sider>.nav>li .icon:before {
+    content: "\e080";
+    font-size: 12px;
+}
+.sider>.nav>.open .icon:before {
+    content: "\e114";
+    font-size: 12px;
+}
+.nav-link:before{
+    content: '';
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    background:blue;
+}
+.sider .nav>.active a:focus, .sider .nav>.active a:hover {
+    text-decoration: none;
+    background: unset;
+    color: #fff;
+}

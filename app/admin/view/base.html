@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=0, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/admin.css?v=1">
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/bootstrap.js"></script>
+  <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+  <title> {block name="title"}日记本{/block}</title>
+</head>
+<body>
+<nav class="navbar navbar-default header">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{:url('/gl/main')}">
+        <img src="/logo.png" alt="日记本"><span>后台管理</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">清除缓存</a></li>
+        <li><a href="#">修改密码</a></li>
+        <li><a href="{:url('/gl/logout')}">退出</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid main-box">
+     <div class="sider">
+       <ul class="nav flex-column">
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/main')}">概览</a></li>
+         <li class="nav-item open">
+           <a href="#"><span>文章管理</span><i class="glyphicon icon"></i></a>
+           <ul class="nav sub-menu">
+             <li class="nav-item sub-item">
+               <a class="nav-link" href="{:url('/gl/article/add')}">新增文章</a>
+             </li>
+             <li class="nav-item sub-item">
+               <a class="nav-link" href="{:url('/gl/article')}">文章列表</a>
+             </li>
+           </ul>
+         </li>
+         <li class="nav-item" ><a class="nav-link" href="{:url('/gl/category')}">分类管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/tag')}">标签管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/attachment')}">附件管理</a></li>
+         <li class="nav-item"><a class="nav-link" href="{:url('/gl/album')}">相册管理</a></li>
+         <li class="nav-item"><a  class="nav-link" href="{:url('/gl/site')}">站点设置</a></li>
+       </ul>
+     </div>
+  <div  class="centent-box" >
+    {block name="content"}{/block}
+  </div>
+</div>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>

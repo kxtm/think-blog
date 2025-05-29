@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <title>管理后台</title>
+</head>
+<body>
+<div class="container-fluid login-container">
+    <form id="login-form" action="{:url('/gl/login')}" method="post">
+        <input type="hidden" name="__token__" value="{:token()}" />
+        <div class="login-title" data-key="{:session('key')}"  data-v="{:session('iv')}">登录</div>
+        <div class="login-error">{:session('error')}</div>
+        <div class="input-group ">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" id="account" required name="username" class="form-control"  value="{:session('username')}" placeholder="用户名"/>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-lock"></span> </span>
+            <input type="password" id="password" required name="password" class="form-control" placeholder="密码"/>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-picture"></span> </span>
+            <input type="text" class="form-control" required id="captcha" name="code" placeholder="验证码"/>
+            <img src="{:url(\'/gl/verify\')}"  id="verifyImg"  data-url="{:url(\'/gl/verify\')}"  alt="验证码">
+        </div>
+        <div class="input-group">
+            <button type="button" id="logn-btn" class="btn  btn-primary ">登录</button>
+        </div>
+    </form>
+    <div class="footer">
+        <div class="footer-wapper">Powered By 大虫 ©2025-2099</div>
+    </div>
+</div>
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/enc.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>

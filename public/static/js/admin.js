@@ -1,0 +1,1 @@
+const path=window.location.pathname;$(".sider .nav-item").each(function(){$(this).removeClass("active");if($(this).children(".nav-link").attr("href")==path){$(this).addClass("active")}});
